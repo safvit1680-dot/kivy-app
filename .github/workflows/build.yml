@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -32,8 +33,10 @@ jobs:
           pip install "cython<3.0.0" buildozer
 
       - name: Build APK with Buildozer
+        env:
+          ACCEPT_BUILD_TERMS: "true"
         run: |
-          buildozer android debug
+          yes | buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
