@@ -12,11 +12,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      name: Build APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Build with Buildozer
-        uses: akshayaurora/buildozer-action@v1
+        uses: subosso/buildozer-action@v1
         with:
           command: buildozer android debug
-          submodule_parent_repo_path: .
+          buildozer_version: master
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
