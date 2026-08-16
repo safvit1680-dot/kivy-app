@@ -9,9 +9,11 @@ requirements = python3,kivy
 orientation = portrait
 fullscreen = 0
 android.api = 33
+android.minapi = 21
 android.ndk = 25c
 android.archs = arm64-v8a
 android.accept_sdk_license = True
+p4a.branch = master
 
 [buildozer]
 log_level = 1
